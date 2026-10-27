@@ -2,7 +2,7 @@
 
 > **VIBECODED SOFTWARE WARNING**
 >
-> This mod is vibecoded. 
+> This mod is vibecoded. The author if fine with current quality and is not planning to invest a lot of time into writing the mod by hand.
 
 > **BETA SOFTWARE WARNING**
 >
