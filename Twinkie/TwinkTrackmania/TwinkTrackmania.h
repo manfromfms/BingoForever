@@ -244,6 +244,7 @@ public:
     std::string GetChallengeDecorationName();
     std::string GetChallengeUID();
     std::string GetChallengeName();
+    std::string GetPlayerName();
     std::string FormatTmDuration(unsigned int Duration);
     std::string WStringToUTF8(const std::wstring& wstr);
     std::wstring UTF8ToWString(const std::string& str);
@@ -275,6 +276,7 @@ public:
     bool IsDeviceKeyboard(unsigned int ClassId);
     bool IsDeviceMouse(unsigned int ClassId);
     bool IsOnline();
+    bool IsLoggedIn();
     bool IsHmsPocHmsCamera(uintptr_t HmsPoc);
     bool IsPersonalBest();
     bool IsPaused();

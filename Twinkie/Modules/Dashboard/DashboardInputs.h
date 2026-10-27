@@ -2,7 +2,7 @@
 
 #include "../../IModule.h"
 
-const char* DashboardStyleNames[];
+extern const char* DashboardStyleNames[];
 
 // thank you omar very cool
 struct Vec2

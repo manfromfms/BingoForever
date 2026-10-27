@@ -389,6 +389,24 @@ std::string TwinkTrackmania::GetChallengeName()
     return "";
 }
 
+std::string TwinkTrackmania::GetPlayerName()
+{
+    wchar_t Buffer[256] = {};
+    DWORD Length = (DWORD)(sizeof(Buffer) / sizeof(Buffer[0]));
+    if (GetUserNameW(Buffer, &Length) && Length > 0)
+    {
+        if (Buffer[Length - 1] == L'\0') Length--;
+        if (Length > 0) return WStringToUTF8(std::wstring(Buffer, Length));
+    }
+
+    return "Player";
+}
+
+bool TwinkTrackmania::IsLoggedIn()
+{
+    return GetPayingAccountType() != TM::AccountType::Disconnected;
+}
+
 int TwinkTrackmania::GetBestTime()
 {
     uintptr_t StructPtr = Read<uintptr_t>(CurPlayerInfo.PlayerInfo);
@@ -853,3 +871,21 @@ bool TwinkTrackmania::IsInMediaTracker()
     if (!GetEditor()) return false;
     return IsMwNodKindOf(GetEditor(), 0x030b1000);
 }
+template IDirect3DDevice9* TwinkTrackmania::Read<IDirect3DDevice9*>(uintptr_t);
+template TM::CFastArray<uintptr_t> TwinkTrackmania::Read<TM::CFastArray<uintptr_t>>(uintptr_t);
+template TM::CFastBuffer<SSimulationWheel> TwinkTrackmania::Read<TM::CFastBuffer<SSimulationWheel>>(uintptr_t);
+template TM::CFastBuffer<TM::GmNat3> TwinkTrackmania::Read<TM::CFastBuffer<TM::GmNat3>>(uintptr_t);
+template TM::CFastBuffer<uintptr_t> TwinkTrackmania::Read<TM::CFastBuffer<uintptr_t>>(uintptr_t);
+template TM::CFastStringInt TwinkTrackmania::Read<TM::CFastStringInt>(uintptr_t);
+template TM::GmIso4 TwinkTrackmania::Read<TM::GmIso4>(uintptr_t);
+template TM::RaceState TwinkTrackmania::Read<TM::RaceState>(uintptr_t);
+template VehicleInputs TwinkTrackmania::Read<VehicleInputs>(uintptr_t);
+template bool TwinkTrackmania::Read<bool>(uintptr_t);
+template float TwinkTrackmania::Read<float>(uintptr_t);
+template int TwinkTrackmania::Read<int>(uintptr_t);
+template uintptr_t TwinkTrackmania::Read<uintptr_t>(uintptr_t);
+template unsigned long TwinkTrackmania::Read<unsigned long>(uintptr_t);
+
+template void TwinkTrackmania::Write<float>(float, uintptr_t);
+template void TwinkTrackmania::Write<int>(int, uintptr_t);
+template void TwinkTrackmania::Write<uintptr_t>(uintptr_t, uintptr_t);

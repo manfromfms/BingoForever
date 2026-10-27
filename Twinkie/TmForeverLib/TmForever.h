@@ -1,8 +1,20 @@
 #pragma once
 
-#pragma comment(lib, "TmForeverLib/TmForever.lib")
+#ifndef _MSC_VER
+#define TWINKIE_TMF_IMPORT
+#else
+#define TWINKIE_TMF_IMPORT __declspec(dllimport)
+#endif
 
-#define TMF_API __declspec( dllimport )
+#ifndef _MSC_VER
+#define TWINKIE_TMF_NO_PRAGMA
+#endif
+
+#ifndef TWINKIE_TMF_NO_PRAGMA
+#pragma comment(lib, "TmForeverLib/TmForever.lib")
+#endif
+
+#define TMF_API TWINKIE_TMF_IMPORT
 
 class CFastStringInt
 {
@@ -10,7 +22,7 @@ public:
     int Size;
     wchar_t* Cstr;
 
-    __declspec(dllimport) __thiscall CFastStringInt(wchar_t const*);
+    TWINKIE_TMF_IMPORT __thiscall CFastStringInt(wchar_t const*);
 };
 
 class CMwNod {
@@ -31,7 +43,7 @@ class CClassicArchive : public CMwNod
 {
 };
 
-class __declspec(dllimport) CSystemArchiveNod : public CClassicArchive
+class TWINKIE_TMF_IMPORT CSystemArchiveNod : public CClassicArchive
 {
 public:
     enum EArchive
@@ -49,7 +61,7 @@ public:
     static int __cdecl LoadFileFrom(CFastStringInt const&, CMwNod*&, CSystemFids*, EArchive);
 };
 
-class __declspec(dllimport) CSystemEngine : public CMwNod
+class TWINKIE_TMF_IMPORT CSystemEngine : public CMwNod
 {
 public:
     CSystemFids* __thiscall GetLocationData();

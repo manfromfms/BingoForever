@@ -1,5 +1,8 @@
 #include "SplitSpeeds.h"
 
+#include <algorithm>
+#include <cmath>
+
 void SplitSpeedsModule::DrawSpeedAndSplitText(ImDrawList* DrawList, std::string ValueText, std::string DiffText, ImVec4 TextColor, ImVec4 BgColor)
 {
 	using namespace ImGui;
@@ -14,11 +17,11 @@ void SplitSpeedsModule::DrawSpeedAndSplitText(ImDrawList* DrawList, std::string 
 	ImVec2 RectMin;
 	ImVec2 RectMax;
 
-	RectMin.x = min(ValCoord.x, DiffCoord.x) - 5.f;
-	RectMin.y = min(ValCoord.y, DiffCoord.y) - 5.f;
+	RectMin.x = std::min(ValCoord.x, DiffCoord.x) - 5.f;
+	RectMin.y = std::min(ValCoord.y, DiffCoord.y) - 5.f;
 
-	RectMax.x = max(ValCoord.x + (SizeVal.x), DiffCoord.x + (SizeDiff.x)) + 5.f;
-	RectMax.y = max(ValCoord.y + (SizeVal.y), DiffCoord.y + (SizeDiff.y)) + 5.f;
+	RectMax.x = std::max(ValCoord.x + (SizeVal.x), DiffCoord.x + (SizeDiff.x)) + 5.f;
+	RectMax.y = std::max(ValCoord.y + (SizeVal.y), DiffCoord.y + (SizeDiff.y)) + 5.f;
 
 	DrawList->AddRectFilled(RectMin, RectMax, ColorConvertFloat4ToU32(BgColor));
 	DrawList->AddText(ImVec2((ScreenSize.x / 2.f) - (SizeVal.x / 2.f), ScreenSize.y / 10.f), ColorConvertFloat4ToU32(TextColor), ValueText.c_str());
@@ -84,7 +87,7 @@ void SplitSpeedsModule::RenderInactive()
 		
 		if (CurrentCheckpoint != LastCheckpoint)
 		{
-			Splits.push_back(UnsignedSpeed ? fabs(Twinkie->GetDisplaySpeed()) : Twinkie->GetDisplaySpeed());
+			Splits.push_back(UnsignedSpeed ? std::fabs(Twinkie->GetDisplaySpeed()) : Twinkie->GetDisplaySpeed());
 			CurrentCheckpointIdx++;
 		}
 

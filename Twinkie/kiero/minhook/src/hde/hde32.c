@@ -8,6 +8,7 @@
 #if defined(_M_IX86) || defined(__i386__)
 
 #include "hde32.h"
+#include <intrin.h>
 #include "table32.h"
 
 unsigned int hde32_disasm(const void *code, hde32s *hs)

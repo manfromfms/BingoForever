@@ -135,6 +135,15 @@
     <ClInclude Include="Modules\About\About.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Modules\Bingo\Bingo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\Bingo\BingoNet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\Bingo\BingoTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Modules\GhostEditor\GhostEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -252,6 +261,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\About\About.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Bingo\Bingo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Bingo\BingoNet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\GhostEditor\GhostEditor.cpp">

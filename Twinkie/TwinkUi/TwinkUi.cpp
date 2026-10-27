@@ -64,6 +64,7 @@ TwinkUi::TwinkUi()
     Modules.push_back(new AlwaysOfficialModule(TrackmaniaMgr, Logger, &DoRender));
     Modules.push_back(new TelemetryModule(TrackmaniaMgr, Logger, &DoRender));
     Modules.push_back(new DownloadServerMapsModule(TrackmaniaMgr, Logger, &DoRender));
+    Modules.push_back(new BingoModule(TrackmaniaMgr, Logger, &DoRender));
 
     Logger.PrintInternalArgs("{} C++ module{} initialized.", Modules.size(), Modules.size() == 1 ? "" : "s");
 

@@ -21,6 +21,7 @@
 
 #include "../Modules/About/About.h"
 #include "../Modules/AlwaysOfficial/AlwaysOfficial.h"
+#include "../Modules/Bingo/Bingo.h"
 #include "../Modules/CheckpointCounter/CheckpointCounter.h"
 #include "../Modules/Dashboard/DashboardInputs.h"
 #include "../Modules/Dashboard/DashboardTacho.h"
