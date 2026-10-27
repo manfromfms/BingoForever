@@ -69,24 +69,6 @@ board and claim squares by setting the fastest time.
 For internet play, the host's TCP port (default `42123`) must be reachable.
 If you are behind a router, use port forwarding or a VPN/LAN.
 
-## Antivirus warning
-
-This project is unsigned and in beta. Microsoft Defender and other antivirus
-products may quarantine builds with heuristic detections such as
-`Trojan:Win32/Wacatac.C!ml`. This is a known false-positive pattern for
-unsigned mods that hook or patch games.
-
-Before allowing a build:
-
-1. Get the DLL from a trusted source and verify its SHA-256 hash.
-2. Restore it from quarantine.
-3. Clear the download flag with `Unblock-File .\TwinkieModloader.dll`.
-4. If needed, allow the specific file in Defender's protection history.
-
-Do not disable real-time protection for your whole system. If a detection
-persists with a verified hash, report it to the antivirus vendor as a false
-positive.
-
 ## Building
 
 Use a **MSVC-compatible toolchain** (Visual Studio 2022, x86). Do not build
