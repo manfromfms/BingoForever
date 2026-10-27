@@ -1,50 +1,110 @@
-*This project is discontinued.*
-# TwinkieForever
-[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/TwinkieTweaks/TwinkieForever?include_prereleases&color=f132e3)](https://github.com/TwinkieTweaks/TwinkieForever/releases)
-[![GitHub all releases](https://img.shields.io/github/downloads/TwinkieTweaks/TwinkieForever/total?color=f132e3)](https://github.com/TwinkieTweaks/TwinkieForever/releases)
-[![GitHub contributors](https://img.shields.io/github/contributors/TwinkieTweaks/TwinkieForever?color=f132e3)](https://github.com/TwinkieTweaks/TwinkieForever/graphs/contributors)\
-TwinkieForever is a discontinued fork of Twinkie, for TrackMania Forever.\
-It features a modular (or plugin-like) system for overlays and patches, that makes it practical to customize every feature available.
+# BingoForever
 
-# Setup
-To use Twinkie, you will need to install the [Trackmania Modloader](https://tomashu.dev/software/tmloader), and after that, go grab the latest release from [the Releases page](https://github.com/TwinkieTweaks/Twinkie/releases), and install Twinkie using the `TwinkieInstallerModloader.exe` file. Alternatively, if you're using a portable Modloader install, you can go grab the `TwinkieModloader.dll` as well, for a manual setup.
+> **BETA SOFTWARE WARNING**
+>
+> This mod is in beta. Expect bugs, crashes, protocol changes, and lost match
+> state. Back up your `TwinkieModloader.dll` and game files before using it.
+> Both players must run the same build. Do not use this for competitive events
+> without testing it first.
 
-## Discord
-We have a discord server at https://discord.gg/kRZ4MdCkVf
+BingoForever is a fork of [TwinkieForever](https://github.com/TwinkieTweaks/TwinkieForever)
+for TrackMania Nations Forever / United Forever. It keeps the Twinkie module
+system and adds a multiplayer **Bingo** module: teams race maps from a shared
+board and claim squares by setting the fastest time.
 
-## Special thanks
-To [GreffMASTER](https://github.com/GreffMASTER) and [brokenphilip](https://github.com/brokenphilip) for helping me during development. brokenphilip has his own [tool for TMUF](https://github.com/BulbToys/TMUF) and GreffMASTER [as well (for TM1.0)](https://github.com/GreffMASTER/TMStuff) if you're interested in more cool mods for old TM games.\
-GreffMASTER also provided me with a helpful list of class members and their offsets for TMF, alongside brokenphilip helping me along my RE journey for this project <3
+## Bingo features
 
-## Limitations
-- Medal.tv requires a work-around to function properly (see below)
-- Hiding the in-game HUD might also hide the Twinkie UI or make it look weird. To fix this, try changing your shader quality to something different.
+- Host/client play over TCP (default port `42123`).
+- 2 to 8 teams, with team selection/changes in the lobby.
+- Configurable board size from 3x3 to 7x7 (default 5x5).
+- One record per square; the fastest time owns it.
+- Empty squares are claimed by finishing the map, optionally subject to a
+  Bronze/Silver/Gold/Author medal requirement.
+- Claimed squares can only be taken with a strictly faster time.
+- Configurable match timer (default 90 minutes, `0` disables it).
+- Start-of-match grace period (default 5 minutes); claims count during grace,
+  but no line can win until it ends.
+- On timeout, the team with the most occupied squares wins; ties are draws.
+- Click a square to launch its map with `/useexedir /singleinst /file=...`.
+- Hover a square to see the target time: the previous player's record, or the
+  medal requirement for an empty square.
+- Claim/reclaim, join, team change, grace, time-left, and winner notifications.
+- Player names come from the active local profile; optional Nadeo-login check
+  for host/join.
 
-## Medal.tv
-You might have to do these following steps to make Twinkie work alongside it: 
-- Make sure your Medal app is up to date first. 
-- Then, in Settings > Advanced and in the "Advanced | Recording section, turn on "Force Window Capture". 
-Keep in mind that **this is an experimental setting**, **it might not work at all** or **it might make your clips stuttery** but it is worth trying.
+## Requirements
 
-## Features
-- **Lua scripting**, for custom module creation
-- Ghost Editor, allows you to access the ghost editor without the cheat code.
-- Dashboard, an input display and gear display (tachometer, and gear number indicator) with customizable options
-- Checkpoint counter, does what it says right on the tin
-- Medals window, for easily viewing medals
-- Tweaker, for customizing your render distance (even though [TMUnlimiter already does that](https://github.com/tomek0055/TMUnlimiter/wiki/Game-Settings))
-- **Grinding Stats**, a module that keeps track of your progress for each map
-- **Always official**, that brings up the Official Mode menu when you reset (only for United accounts)
-- **Map Validator**, for validating your maps
+- Windows, with a 32-bit TrackMania Nations Forever or United Forever install.
+- [Trackmania Modloader](https://tomashu.dev/software/tmloader).
+- The x86 Microsoft Visual C++ 2015-2022 Redistributable.
+- The same BingoForever/Twinkie build on every player's machine.
 
-## Screenshots
-<img width="1919" height="1079" alt="In stadium, with every UI element visible" src="https://github.com/user-attachments/assets/d613bbe6-55f6-468b-96dd-9b4be8f221b8" />
+## Installation
 
-## Contribute
-This project is discontinued.
+1. Install the Trackmania Modloader if you do not already use it.
+2. Install Twinkie normally, or set up the Modloader manually:
+   - Put `TwinkieModloader.dll`, `LuaEngine2.dll`, and `lua54.dll` in the
+     TrackMania game folder.
+   - Make sure `ModLoader.ini` contains entries for those files, for example:
+     ```ini
+     LuaEngine2=LuaEngine2.dll
+     lua54.dll=lua54.dll
+     TwinkieModloader.dll=TwinkieModloader.dll
+     ```
+3. Start the game and enable the **Bingo** module in Twinkie settings.
+4. Configure the map folder, player settings, and port in
+   **Twinkie Settings -> Bingo**.
 
-## Support me
-There currently aren't any monetary ways of supporting me, so if you like Twinkie and you have a github account, please star it so that more people see it, or be kind enough to share it with your friends.
+## How to play
 
-## Fonts
-Twinkie uses Cascadia Mono (see its license [here](https://fonts.google.com/specimen/Cascadia+Mono/license) (Google Fonts), and [here](https://openfontlicense.org/open-font-license-official-text/) (openfontlicense.org)), Bricolage Grotesque ([Google Fonts](https://fonts.google.com/specimen/Bricolage+Grotesque)), Droid Sans, and [ManiaIcons](https://github.com/openplanet-nl/maniaicons) by the Openplanet Team
+1. The host opens **Twinkie Settings -> Bingo** and clicks **Host**.
+2. Other players enter the host IP and click **Join**.
+3. Pick teams in the lobby.
+4. The host generates a board and starts the match.
+5. Players click board squares to load maps, then finish them to claim or
+   reclaim squares.
+6. A full row, column, or diagonal after the grace period wins the match, or
+   the team with the most squares wins on timeout.
+
+For internet play, the host's TCP port (default `42123`) must be reachable.
+If you are behind a router, use port forwarding or a VPN/LAN.
+
+## Antivirus warning
+
+This project is unsigned and in beta. Microsoft Defender and other antivirus
+products may quarantine builds with heuristic detections such as
+`Trojan:Win32/Wacatac.C!ml`. This is a known false-positive pattern for
+unsigned mods that hook or patch games.
+
+Before allowing a build:
+
+1. Get the DLL from a trusted source and verify its SHA-256 hash.
+2. Restore it from quarantine.
+3. Clear the download flag with `Unblock-File .\TwinkieModloader.dll`.
+4. If needed, allow the specific file in Defender's protection history.
+
+Do not disable real-time protection for your whole system. If a detection
+persists with a verified hash, report it to the antivirus vendor as a false
+positive.
+
+## Building
+
+Use a **MSVC-compatible toolchain** (Visual Studio 2022, x86). Do not build
+this project with MinGW: the prebuilt `LuaEngine2.dll` is MSVC-built and
+imports Twinkie C++ symbols, and MinGW's C++ ABI is incompatible.
+
+Open `Twinkie.sln`, select a 32-bit configuration, and build
+`TwinkieModloader.dll`.
+
+## Credits
+
+- Original Twinkie / TwinkieForever by the TwinkieTweaks authors and
+  contributors.
+- MinHook by Tsuda Kageyu.
+- Dear ImGui by Omar Cornut and contributors.
+- Lua and the LuaEngine components by their respective authors.
+- Openplanet ManiaIcons by the Openplanet team.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
