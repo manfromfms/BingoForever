@@ -1,5 +1,9 @@
 # BingoForever
 
+> **VIBECODED SOFTWARE WARNING**
+>
+> This mod is vibecoded. 
+
 > **BETA SOFTWARE WARNING**
 >
 > This mod is in beta. Expect bugs, crashes, protocol changes, and lost match
