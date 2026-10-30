@@ -4,7 +4,7 @@
 >
 > This mod is vibecoded. The author is fine with current quality and is not planning to invest a lot of time into writing the mod by hand.
 
-> **BETA SOFTWARE WARNING**
+> **❗UNSAFE BETA SOFTWARE WARNING**
 >
 > This mod is in beta. Expect bugs, crashes, protocol changes, and lost match
 > state. Back up your `TwinkieModloader.dll` and game files before using it.
