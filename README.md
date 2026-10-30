@@ -1,6 +1,6 @@
 # BingoForever
 
-> **VIBECODED SOFTWARE WARNING**
+> **❗VIBECODED SOFTWARE WARNING**
 >
 > This mod is vibecoded. The author is fine with current quality and is not planning to invest a lot of time into writing the mod by hand.
 
