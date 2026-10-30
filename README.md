@@ -35,6 +35,8 @@ board and claim squares by setting the fastest time.
 - Claim/reclaim, join, team change, grace, time-left, and winner notifications.
 - Player names come from the active local profile; optional Nadeo-login check
   for host/join.
+- Optional standalone dedicated server (`bingo_server.py`) for hosting without
+  running the game as the host.
 
 ## Requirements
 
@@ -72,6 +74,40 @@ board and claim squares by setting the fastest time.
 
 For internet play, the host's TCP port (default `42123`) must be reachable.
 If you are behind a router, use port forwarding or a VPN/LAN.
+
+## Dedicated server
+
+`bingo_server.py` is a standalone Python 3 host that speaks the same protocol
+as the in-game host. It needs no third-party packages and serves board maps to
+clients that do not have them. Point it at a folder of `.Challenge.Gbx` maps:
+
+```bash
+python3 bingo_server.py \
+  --map-folder "/path/to/TrackMania/Tracks/Challenges/Downloaded" \
+  --port 42123 --board-size 5 --teams 2 \
+  --match-minutes 90 --grace-minutes 5 \
+  --auto-start --start-delay 15
+```
+
+Options:
+
+- `--host` bind address (default `0.0.0.0`)
+- `--port` TCP port (default `42123`)
+- `--map-folder` folder scanned recursively for challenge files
+- `--board-size` 3 to 7 (default 5)
+- `--teams` 2 to 8 (default 2)
+- `--medal-rule` `None`, `Bronze`, `Silver`, `Gold`, `Author`, or `0`-`4`
+- `--match-minutes` match length, `0` for unlimited (default 90)
+- `--grace-minutes` grace period (default 5)
+- `--require-login` reject players without a Nadeo login
+- `--seed` reproducible board generation
+- `--skip-medal-times` skip GBX medal parsing
+- `--auto-start` and `--start-delay` start the match automatically
+
+Runtime commands on stdin: `start`, `stop`, `newboard`, `rescan`, `status`,
+`players`, `kick <id>`, `help`, `quit`. Players join the server through the
+normal **Twinkie Settings -> Bingo** client UI, using the server's IP and port.
+Both the server and clients must run the same protocol/build.
 
 ## Building
 

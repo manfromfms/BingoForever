@@ -209,7 +209,8 @@ struct BingoNet::Impl
 			FD_ZERO(&ReadSet);
 			FD_ZERO(&WriteSet);
 
-			SOCKET MaxSocket = INVALID_SOCKET;
+			SOCKET MaxSocket = 0;
+			bool HasSockets = false;
 
 			{
 				std::lock_guard<std::mutex> Lock(Mutex);
@@ -218,6 +219,7 @@ struct BingoNet::Impl
 				{
 					FD_SET(ListenSocket, &ReadSet);
 					MaxSocket = ListenSocket;
+					HasSockets = true;
 				}
 
 				for (auto& Pair : Clients)
@@ -227,10 +229,11 @@ struct BingoNet::Impl
 					FD_SET(Target.Socket, &ReadSet);
 					if (!Target.Out.empty()) FD_SET(Target.Socket, &WriteSet);
 					if (Target.Socket > MaxSocket) MaxSocket = Target.Socket;
+					HasSockets = true;
 				}
 			}
 
-			if (MaxSocket == INVALID_SOCKET)
+			if (!HasSockets)
 			{
 				std::this_thread::sleep_for(std::chrono::milliseconds(10));
 				continue;
